@@ -320,6 +320,26 @@ ofxDatGuiSlider* ofxDatGui::addSlider(string label, float min, float max, float 
     return slider;
 }
 
+ofxDatGuiSlider* ofxDatGui::addSlider(string label, float& ref, float min, float max, float val)
+{
+    ofxDatGuiSlider* slider = new ofxDatGuiSlider(label, min, max, val);
+    slider->onSliderEvent(this, &ofxDatGui::onSliderEventCallback);
+    slider->bind(ref, min, max);
+    ref = val;
+    attachItem(slider);
+    return slider;
+}
+
+ofxDatGuiSlider* ofxDatGui::addSlider(string label, int& ref, int min, int max, int val)
+{
+    ofxDatGuiSlider* slider = new ofxDatGuiSlider(label, min, max, val);
+    slider->onSliderEvent(this, &ofxDatGui::onSliderEventCallback);
+    slider->bind(ref, min, max);
+    ref = val;
+    attachItem(slider);
+    return slider;
+}
+
 ofxDatGuiTextInput* ofxDatGui::addTextInput(string label, string value)
 {
     ofxDatGuiTextInput* input = new ofxDatGuiTextInput(label, value);
